@@ -1,13 +1,17 @@
 # Workstation
 
-My workstation setup.
+My workstation automatic setup.
 
 ## Requirements
 
 To use it, you need to have installed previously:
 
-- 
-- 
+- Ansible and its dependencies.
+
+Fedora:
+```
+sudo dnf install ansible
+```  
 
 ## Usage
 
@@ -23,3 +27,6 @@ This repository ensures the following configuration and software installed.
 
 1. Common
     1. Sudo without password.
+2. Fedora
+    1. Install RPM.
+    2. Upgrade and update system.
