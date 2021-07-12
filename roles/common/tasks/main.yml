@@ -1,0 +1,8 @@
+---
+# file: roles/common/tasks/main.yml
+
+- name: NOPASSWD sudo
+  lineinfile: "dest=/etc/sudoers.d/{{ ansible_env.SUDO_USER }}
+    create=yes state=present mode=0440
+    owner=root group=root
+    line='{{ ansible_env.USERNAME }} ALL=(ALL) NOPASSWD: ALL'"
