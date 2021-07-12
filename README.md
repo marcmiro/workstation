@@ -2,6 +2,13 @@
 
 My workstation setup.
 
+## Requirements
+
+To use it, you need to have installed previously:
+
+- 
+- 
+
 ## Usage
 
 Launch the following command on the repository path.

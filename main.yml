@@ -5,3 +5,5 @@
   become: yes
   roles:
     - common
+    - role: fedora
+      when: "ansible_distribution == 'Fedora'"
