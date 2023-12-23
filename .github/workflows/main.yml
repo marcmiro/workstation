@@ -3,20 +3,20 @@ name: Ansible Lint
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     branches:
-    - main
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Run ansible-lint
-      uses: ansible/ansible-lint@main
-      with:
-        targets: |
-          main.yml
+      - name: Run ansible-lint
+        uses: ansible/ansible-lint@v6
+        with:
+          targets: |
+            main.yml
