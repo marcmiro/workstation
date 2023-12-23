@@ -2,10 +2,10 @@
 # Install and configure a MacOS workstation.
 
 - name: This is a MacOS distribution. Starting installation.
-  hosts: localhost
-  become: true
-  vars_files:
-    - /group_vars/macos.yml
-  roles:
-    - common
-    # - brew
+  include_role:
+    name: "{{ item }}"
+  loop: "{{ roles }}"
+  vars:
+    roles:
+      - common
+      - brew

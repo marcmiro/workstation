@@ -8,10 +8,15 @@ To use it, you need to have installed previously:
 
 - Ansible and its dependencies.
 
-Fedora:
+MacOS:
 ```
 sudo dnf install ansible
 ```  
+
+Fedora:
+```
+sudo dnf install ansible
+``` 
 
 ## Usage
 
