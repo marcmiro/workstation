@@ -1,9 +1,9 @@
 ---
-# file: main.yml
+# This is the main file to start the installation and autoselect the OS distribution.
 
-- hosts: localhost
-  become: yes
-  roles:
-    - common
-    - role: fedora
-      when: "ansible_distribution == 'Fedora'"
+- name: Launching workstation installation.
+  block:
+    - import_playbook: install_macos.yml
+      when: ansible_distribution == "MacOSX"
+    # - import_playbook: install_fedora.yml
+    #   when: ansible_distribution == "Fedora"
