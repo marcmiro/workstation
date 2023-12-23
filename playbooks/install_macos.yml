@@ -2,10 +2,7 @@
 # Install and configure a MacOS workstation.
 
 - name: This is a MacOS distribution. Starting installation.
-  include_role:
-    name: "{{ item }}"
-  loop: "{{ roles }}"
-  vars:
-    roles:
-      - common
-      - brew
+  hosts: localhost
+  roles:
+    - common
+    - brew
