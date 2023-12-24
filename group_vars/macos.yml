@@ -1,5 +1,0 @@
-brew:
-  cask_packages:
-    - blabla
-  brew_packages:
-    - blabla

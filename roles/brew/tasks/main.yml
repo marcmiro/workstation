@@ -3,70 +3,23 @@
 
 - name: Install MacOS Packages
   become: false
-  vars:
-    brew_cask_packages:
-      - atom
-      - docker
-      - dropbox
-      - firefox
-      - google-chrome
-      - google-drive
-      - google-hangouts
-      - iterm2
-      - keepassx
-      - kodi
-      - lastpass
-      - macvim
-      - royal-tsx
-      - skype
-      - slack
-      - sling
-      - spotify
-      - sublime-text
-      - vagrant
-      - vagrant-manager
-      - virtualbox
-      - virtualbox-extension-pack
-      - visual-studio-code
-      - vmware-fusion
-    brew_packages:
-      - git
-      - jq
-    # python_modules:
-    #   - configparser
-    #   - pylint
-    #   - virtualenv
-    upgrade_homebrew_packages: false
-  tasks:
-    - name: Updating Homebrew
+  block:
+    - name: Upgrading Homebrew Packages (always as changed with check mode)
       homebrew:
-        update_homebrew: true
-      when: homebrew_check.stat.exists
-
-    - name: Upgrading Homebrew Packages
-      homebrew:
-        upgrade_all: "{{ upgrade_homebrew_packages }}"
+        upgrade_all: true
       register: result
       until: result is successful
-      when: homebrew_check.stat.exists
 
     - name: Installing Homebrew Cask Packages
       homebrew_cask:
-        name: "{{ brew_cask_packages }}"
+        name: "{{ macos['brew']['cask_packages'] }}"
         state: present
       register: result
       until: result is successful
-      when: homebrew_check.stat.exists
 
-    - name: Installing Homebrew Packages
+    - name: Installing Homebrew Packages 
       homebrew:
-        name: "{{ brew_packages }}"
+        name: "{{ macos['brew']['packages'] }}"
         state: present
       register: result
       until: result is successful
-      when: homebrew_check.stat.exists
-    # - name: Installing Python Modules
-    #   pip:
-    #     name: "{{ item }}"
-    #     state: present
-    #   with_items: '{{ python_modules }}'

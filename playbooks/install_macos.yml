@@ -1,8 +1,0 @@
----
-# Install and configure a MacOS workstation.
-
-- name: This is a MacOS distribution. Starting installation.
-  hosts: localhost
-  roles:
-    - common
-    - brew

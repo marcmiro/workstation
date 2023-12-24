@@ -1,0 +1,11 @@
+---
+# Task to init MacOS distribution
+
+- name: Install and configure MacOS
+  include_role:
+    name: '{{ role }}'
+  loop:
+    - common
+    - brew
+  loop_control:
+    loop_var: role

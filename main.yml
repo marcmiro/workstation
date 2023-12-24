@@ -8,27 +8,8 @@
   vars:
     ansible_python_interpreter: /usr/bin/python3
   tasks:
-    - name: Run MacOS playbook
-      include_tasks: playbooks/install_macos.yml
+    - import_tasks: distribution_macos.yml
       when: ansible_distribution == "MacOSX"
 
-    # - name: Run Fedora playbook
-    #   include_tasks: install_fedora.yml
+    # - import_tasks: distribution_fedora.yml
     #   when: ansible_distribution == "Fedora"
-
-
-# - name: Determine OS and run appropriate playbook
-#   hosts: localhost
-#   become: true
-#   gather_facts: true
-#   tasks:
-#     - name: Include MacOS playbook
-#       include_tasks: playbooks/install_macos.yml
-#       vars_files:
-#         - /group_vars/macos.yml
-#       when: ansible_distribution == "MacOSX"
-
-#     # Uncomment the following lines to add more OS-specific tasks
-#     # - name: Include Fedora playbook
-#     #   include_tasks: playbooks/install_fedora.yml
-#     #   when: ansible_distribution == "Fedora"
