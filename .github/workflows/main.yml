@@ -16,3 +16,5 @@ jobs:
         uses: ansible/ansible-lint@v6
       - name: Perform integration testing with ansible-test
         uses: ansible-community/ansible-test-gh-action@release/v1
+        with:
+          testing-type: sanity
