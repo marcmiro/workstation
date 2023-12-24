@@ -2,7 +2,7 @@
 # Task to init MacOS distribution
 
 - name: Install and configure MacOS
-  include_role:
+  ansible.builtin.include_role:
     name: '{{ role }}'
   loop:
     - common

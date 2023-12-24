@@ -9,9 +9,9 @@
     ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Distribution is MacOS
-      import_tasks: distribution_macos.yml
+      ansible.builtin.import_tasks: distribution_macos.yml
       when: ansible_distribution == "MacOSX"
 
     # - name: Distribution is Fedora
-    #   import_tasks: distribution_fedora.yml
+    #   ansible.builtin.import_tasks: distribution_fedora.yml
     #   when: ansible_distribution == "Fedora"
