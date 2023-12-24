@@ -1,2 +1,2 @@
-skip_list:
-  - '301'  # Error code for "couldn't resolve module/action"
+mock_modules:
+  - homebrew
