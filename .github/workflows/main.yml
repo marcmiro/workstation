@@ -19,7 +19,6 @@ jobs:
     needs: build
     runs-on: macos-latest
     steps:
-      - name: Perform integration testing with ansible-test
-        uses: ansible-community/ansible-test-gh-action@release/v1
-        with:
-          testing-type: sanity
+      - uses: actions/checkout@v4
+      - name: Run Ansible Playbook
+        run: ./init.sh
