@@ -8,8 +8,10 @@
   vars:
     ansible_python_interpreter: /usr/bin/python3
   tasks:
-    - import_tasks: distribution_macos.yml
+    - name: Distribution is MacOS
+      import_tasks: distribution_macos.yml
       when: ansible_distribution == "MacOSX"
 
-    # - import_tasks: distribution_fedora.yml
+    # - name: Distribution is Fedora
+    #   import_tasks: distribution_fedora.yml
     #   when: ansible_distribution == "Fedora"
