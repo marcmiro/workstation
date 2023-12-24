@@ -14,3 +14,11 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run ansible-lint
         uses: ansible/ansible-lint@v6
+  ci:
+    name: Ansible Test
+    needs: build
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Ansible Playbook
+        run: ./init.sh
