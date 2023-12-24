@@ -1,0 +1,25 @@
+# ---
+# # file: roles/macos/tasks/brew.yml
+
+- name: Install MacOS Packages
+  become: false
+  block:
+    - name: Upgrading Homebrew Packages (always as changed with check mode)
+      community.general.homebrew:
+        upgrade_all: true
+      register: result
+      until: result is successful
+
+    - name: Installing Homebrew Cask Packages
+      community.general.homebrew_cask:
+        name: "{{ macos['brew']['cask_packages'] }}"
+        state: present
+      register: result
+      until: result is successful
+
+    - name: Installing Homebrew Packages
+      community.general.homebrew:
+        name: "{{ macos['brew']['packages'] }}"
+        state: present
+      register: result
+      until: result is successful

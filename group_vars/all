@@ -1,0 +1,6 @@
+macos:
+  brew:
+    cask_packages:
+      - iterm2
+    packages:
+      - jq

@@ -1,0 +1,3 @@
+mock_modules:
+  - community.general.homebrew
+  - community.general.homebrew_cask
