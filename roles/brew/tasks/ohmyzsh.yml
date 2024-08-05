@@ -5,27 +5,27 @@
   become: false
   block:
     - name: Check if ~/.oh-my-zsh directory exists
-      stat:
+      ansible.builtin.stat:
         path: "/Users/{{ ansible_env.USER }}/.oh-my-zsh"
-      register: oh_my_zsh_dir
+      register: dir_ohmyzsh
 
     - name: Download Oh My Zsh installation script
       get_url:
         url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
         dest: /tmp/install_ohmyzsh.sh
-      when: not oh_my_zsh_dir.stat.exists
+      when: not dir_ohmyzsh.stat.exists
 
     - name: Run Oh My Zsh installation script
       command: sh /tmp/install_ohmyzsh.sh --unattended
       register: ohmyzsh_result
       failed_when: "'FAILED' in ohmyzsh_result.stderr"
-      when: not oh_my_zsh_dir.stat.exists
+      when: not dir_ohmyzsh.stat.exists
 
     - name: Remove Oh My Zsh installation script
       ansible.builtin.file:
         path: /tmp/install_ohmyzsh.sh
         state: absent
-      when: not oh_my_zsh_dir.stat.exists
+      when: not dir_ohmyzsh.stat.exists
 
     - name: Download powerline-fonts repository
       ansible.builtin.git:
@@ -38,7 +38,7 @@
       register: fonts_result
       failed_when: "'FAILED' in fonts_result.stderr"
 
-    - name: Remove powerline-fonts installation script
-      ansible.builtin.file:
-        path: /tmp/powerline-fonts
-        state: absent
+    # - name: Remove powerline-fonts installation script
+    #   ansible.builtin.file:
+    #     path: /tmp/powerline-fonts
+    #     state: absent

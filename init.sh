@@ -37,7 +37,7 @@ if [ "$no_check_flag" == false ]; then
 fi
 
 read -r -p "Do you want to proceed without check parameter? [y/N]" -n 1
-if [[ "$REPLY" =~ ^[Yy]$ || "$no_check_flag" == true ]]; then
+if [[ "$REPLY" =~ ^[Yy]$ ]] || [[ "$no_check_flag" == true ]]; then
   echo -e "\nLaunching playbook without check parameter..."
   ansible-playbook -i hosts main.yml --ask-become-pass
 fi
