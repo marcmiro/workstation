@@ -14,6 +14,7 @@
       community.general.homebrew_cask:
         name: "{{ macos['brew']['cask_packages'] }}"
         state: present
+        greedy: true
       register: result
       until: result is successful
 
