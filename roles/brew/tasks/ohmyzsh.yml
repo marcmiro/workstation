@@ -38,7 +38,7 @@
       register: fonts_result
       failed_when: "'FAILED' in fonts_result.stderr"
 
-    # - name: Remove powerline-fonts installation script
-    #   ansible.builtin.file:
-    #     path: /tmp/powerline-fonts
-    #     state: absent
+    - name: Remove powerline-fonts installation script
+      ansible.builtin.file:
+        path: /tmp/powerline-fonts
+        state: absent
