@@ -7,20 +7,21 @@
     - name: Upgrading Homebrew Packages (always as changed with check mode)
       community.general.homebrew:
         upgrade_all: true
-      # register: result
-      # until: result is successful
+      register: result
+      until: result is successful
 
     - name: Installing Homebrew Cask Packages
       community.general.homebrew_cask:
         name: "{{ macos['brew']['cask_packages'] }}"
         state: present
         greedy: true
-      # register: result
-      # until: result is successful
+        install_options: force
+      register: result
+      until: result is successful
 
     - name: Installing Homebrew Packages
       community.general.homebrew:
         name: "{{ macos['brew']['packages'] }}"
         state: present
-      # register: result
-      # until: result is successful
+      register: result
+      until: result is successful
