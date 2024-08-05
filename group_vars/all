@@ -3,5 +3,12 @@ macos:
     cask_packages:
       - iterm2
       - google-chrome
+      - session-manager-plugin # SSM for awscli
     packages:
       - jq
+      - chezmoi
+      - awscli
+      - eksctl
+      - kubernetes-cli
+      - kubectx # Context selector for kubernetes-cli
+      - sops
