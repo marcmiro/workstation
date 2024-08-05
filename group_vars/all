@@ -4,7 +4,11 @@ macos:
       - iterm2
       - google-chrome
       - session-manager-plugin # SSM for awscli
+      - mattermost
+      - slack
+      - amazon-chime
     packages:
+      - git
       - jq
       - chezmoi
       - awscli

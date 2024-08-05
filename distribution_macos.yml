@@ -7,5 +7,6 @@
   loop:
     - common
     - brew
+    - ohmyzsh
   loop_control:
     loop_var: role

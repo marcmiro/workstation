@@ -1,5 +1,5 @@
 # ---
-# # file: roles/macos/tasks/brew.yml
+# Install homebrew and a list of packages and casks
 
 - name: Install MacOS Packages
   become: false
