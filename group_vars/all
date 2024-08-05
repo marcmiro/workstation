@@ -1,5 +1,7 @@
 macos:
   brew:
+    repositories:
+      - aws/tap # Required by eks-node-viewer
     cask_packages:
       - iterm2
       - google-chrome

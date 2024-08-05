@@ -10,6 +10,12 @@
       register: result
       until: result is successful
 
+    - name: Tapping Homebrew repositories
+      community.general.homebrew_tap:
+        name: "{{ macos['brew']['repositories'] }}"
+      register: result
+      until: result is successful
+
     - name: Installing Homebrew Cask Packages
       community.general.homebrew_cask:
         name: "{{ macos['brew']['cask_packages'] }}"
