@@ -2,5 +2,6 @@ macos:
   brew:
     cask_packages:
       - iterm2
+      - google-chrome
     packages:
       - jq
