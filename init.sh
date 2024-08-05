@@ -31,7 +31,7 @@ else
 fi
 
 # Launch Ansible playbook
-if [ "$no_check_flag" == true ]; then
+if [ "$no_check_flag" == false ]; then
   echo "Launching playbook with check parameter..."
   ansible-playbook -i hosts main.yml --ask-become-pass --check
 fi
