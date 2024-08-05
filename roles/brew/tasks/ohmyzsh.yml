@@ -6,7 +6,7 @@
   block:
     - name: Check if ~/.oh-my-zsh directory exists
       stat:
-        path: "{{ ansible_env.HOME }}/.oh-my-zsh"
+        path: "/Users/{{ ansible_env.USER }}/.oh-my-zsh"
       register: oh_my_zsh_dir
 
     - name: Download Oh My Zsh installation script
