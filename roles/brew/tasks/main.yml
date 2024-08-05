@@ -25,3 +25,14 @@
         state: present
       register: result
       until: result is successful
+
+    - name: Find all task files
+      find:
+        paths: "{{ role_path }}/tasks"
+        patterns: "*.yml"
+        excludes: "main.yml"
+      register: task_files
+
+    - name: Include all task files
+      include_tasks: "{{ item.path }}"
+      with_items: "{{ task_files.files }}"

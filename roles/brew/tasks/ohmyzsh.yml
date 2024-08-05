@@ -1,0 +1,36 @@
+# ---
+# Uses: git, zsh
+
+- name: Install Oh My Zsh
+  become: false
+  block:
+    - name: Download Oh My Zsh installation script
+      get_url:
+        url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+        dest: /tmp/install_ohmyzsh.sh
+
+    - name: Run Oh My Zsh installation script
+      command: sh /tmp/install_ohmyzsh.sh --unattended
+      register: ohmyzsh_result
+      failed_when: "'FAILED' in ohmyzsh_result.stderr"
+
+    - name: Remove Oh My Zsh installation script
+      ansible.builtin.file:
+        path: /tmp/install_ohmyzsh.sh
+        state: absent
+
+    - name: Download powerline-fonts repository
+      ansible.builtin.git:
+        repo: 'https://github.com/powerline/fonts.git'
+        dest: /tmp/powerline-fonts
+        depth: 1
+
+    - name: Run powerline-fonts installation script
+      command: sh /tmp/fonts/install.sh --unattended
+      register: fonts_result
+      failed_when: "'FAILED' in fonts_result.stderr"
+
+    - name: Remove powerline-fonts installation script
+      ansible.builtin.file:
+        path: /tmp/powerline-fonts
+        state: absent

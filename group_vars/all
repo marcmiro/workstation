@@ -16,3 +16,5 @@ macos:
       - kubernetes-cli
       - kubectx # Context selector for kubernetes-cli
       - sops
+      - eks-node-viewer
+      - kubecolor
