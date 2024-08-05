@@ -1,6 +1,15 @@
 #!/bin/bash
 # Script to initialize a new workstation
 
+# Init flags flags and set based on parameters
+no_check_flag=false
+
+for arg in "$@"; do
+  if [ "$arg" == "--no-check" ]; then
+    no_check_flag=true
+  fi
+done
+
 # Check if Homebrew is installed, install if we don't have it or upgrade it if we do
 if test ! $(which brew); then
   echo "Installing homebrew..."
@@ -22,10 +31,11 @@ else
 fi
 
 # Launch Ansible playbook
-echo "Launching playbook with check parameter..."
-ansible-playbook -i hosts main.yml --ask-become-pass --check
+if [ "$no_check_flag" == true ]; then
+  echo "Launching playbook with check parameter..."
+  ansible-playbook -i hosts main.yml --ask-become-pass --check
+fi
 
-# Launch Ansible playbook
 read -r -p "Do you want to proceed without check parameter? [y/N]" -n 1
 if [[ "$REPLY" =~ ^[Yy]$ ]]; then
   echo -e "\nLaunching playbook without check parameter..."
