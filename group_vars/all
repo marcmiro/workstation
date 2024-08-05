@@ -20,3 +20,5 @@ macos:
       - sops
       - eks-node-viewer
       - kubecolor
+      - aws-iam-authenticator # AWS plugin to authenticate on EKS
+      - fzf # Used to have kubectx and kubens interactive
